@@ -1,64 +1,93 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <title> Pertemuan 3 Penggunaan dan Implementasi CSS</title>
-  <link rel="stylesheet" href="3-1.css">
-  <link rel="stylesheet" href="3-2.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 3 - Penggunaan dan Implementasi CSS</title>
+    <link rel="stylesheet" href="3-1.css">
+    <link rel="stylesheet" href="3-2.css">
 </head>
-  <body>
-<header><a href="ipwija.ac.id"> Home </a></header>
-<main> hi
-<br/>
-</main id="main" class="main">
-<section>Halo Word</section>
-
-    <section id="gambar" >
-    <img src="edu.png" height="200" width="200">
+<body>
+    <header>
+        <a href="https://ipwija.ac.id">Home</a>
+    </header>
+    
+    <main id="main" class="main">
+        <p>Hi</p>
+    </main>
+    
+    <section>
+        <h2>Halo World</h2>
     </section>
-
-<section id="form" class="col-1-2">
-<form>
-<label>Username:</label><input type="text">
-<label>Password:</label><input type="password">
-<label>Warna:</label><input type="color">
-<label>Dropdown:</label>
-        <select>
-          <option>1</option>
-          <option>2</option>
-        </select>
-<input type="submit" value="cancel">
-        <button> login</button>
-      </form>
+    
+    <section id="gambar">
+        <img src="edu.png" alt="Gambar Edukasi" height="200" width="200">
     </section>
-
+    
+    <section id="form" class="col-1-2">
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            
+            <label for="warna">Warna:</label>
+            <input type="color" id="warna" name="warna">
+            
+            <label for="dropdown">Dropdown:</label>
+            <select id="dropdown" name="dropdown">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            
+            <input type="submit" value="Cancel">
+            <button type="submit">Login</button>
+        </form>
+    </section>
+    
     <section id="paragraf">
-<p>
-<h1> Pertemuan 2</h1>
-<h2> HTML dasar </h2>
-pertemuan 2, dasar HTML membuat paragraf <br/> sederhana dengan huruf <i>miring </i>,<b>Tebal</b>
-</p>
-  <ul>
-    <li>1</li>
-    <li>2</li>
-  </ul>
-  <ol>
-    <li>satu</li>
-    <li>dua</li>
-  </ol>
-</section>
-<section id="table">
-<h2>table</h2>
-<table border="1">
-<thead>
-  <tr><th>jan </th><th>feb </th></tr>
-</thead>
-<tbody>
-<tr><td>1 </td><td>2 </td></tr>
-<tr><td>3 </td><td>4 </td></tr>
-</tbody>
-</table>
-</section>
-
-
-<footer>@2025</footer>
-  </body>
+        <h1>Pertemuan 2</h1>
+        <h2>HTML Dasar</h2>
+        <p>Pertemuan 2 membahas dasar HTML dengan membuat paragraf sederhana, menggunakan huruf <i>miring</i>, <b>tebal</b>.</p>
+        
+        <ul>
+            <li>1</li>
+            <li>2</li>
+        </ul>
+        
+        <ol>
+            <li>Satu</li>
+            <li>Dua</li>
+        </ol>
+    </section>
+    
+    <section id="table">
+        <h2>Tabel</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Jan</th>
+                    <th>Feb</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <footer>
+        &copy; 2025
+    </footer>
+</body>
 </html>
+
+        
