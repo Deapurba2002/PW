@@ -3,12 +3,20 @@
   <title> Pertemuan 3 Styling dengan CSS </title>
 <style>
 input{
-  width:100%;
+  width:80%;
   background:purple;
-}
+}  
 #username{ background:green;}
-.bg-grey{ background:grey;} 
+.bg-grey{ background:grey;}
   
+@media screen and (max-width: 700px) {
+[class*='col-'] { width: 50%; }
+}
+@media screen and (max-width: 450px) {
+[class*='col-'] { width: 100%; }
+}
+
+
 </style>
 
 </head>
@@ -23,11 +31,11 @@ input{
     <img src="edu.png" height="200" width="200">  
     </section>
 
-    <section id="form">
+    <section id="form" class="col-">
       <form>
-<label>Username:</label><input type="text">
-<label>Password:</label><input type="password">
-<label>Warna:</label><input type="color">
+<label>Username:</label><input id="username" type="text">
+<label>Password:</label><input class="bg-grey" type="password">
+<label>Warna:</label><input class="bg-grey" type="color">
 <label>Dropdown:</label>
         <select>
           <option>1</option>
@@ -38,7 +46,7 @@ input{
       </form>
     </section>
 
-    <section id="paragraf">
+    <section id="paragraf" class="col-">
 <p>
 <h1> Pertemuan 2</h1>  
 <h2> HTML dasar </h2>
@@ -53,7 +61,7 @@ pertemuan 2, dasar HTML membuat paragraf <br/> sederhana dengan huruf <i>miring 
     <li>dua</li>
   </ol>
 </section>
-<section id="table">
+<section id="table" class="col-">
 <h2>table</h2>
 <table border="1">
 <thead>
