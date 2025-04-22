@@ -1,6 +1,26 @@
-.row { width: 100%; display: table; table-layout: fixed; }
-.row::after { content: ""; clear: both; }
-[class*='col-'] { float: left;   word-wrap: break-word;}
+/* Layout dasar row sebagai table */
+.row {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}
+
+/* Clear float */
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Kolom dasar: floating dan word wrap */
+[class*='col-'] {
+    float: left;
+    word-wrap: break-word;
+    box-sizing: border-box; /* Tambahan untuk mencegah padding merusak layout */
+    padding: 10px;           /* Biar ada jarak antar kolom */
+}
+
+/* Lebar kolom */
 .col-1-1 { width: 100%; }
 .col-1-2 { width: 50%; }
 .col-1-3 { width: 33.33%; }
@@ -9,9 +29,17 @@
 .col-2-3 { width: 66.66%; }
 .col-3-4 { width: 75%; }
 .col-4-5 { width: 80%; }
+
+/* Responsive: Tablet */
 @media screen and (max-width: 700px) {
-[class*='col-'] { width: 50%; }
+    [class*='col-'] {
+        width: 50%;
+    }
 }
+
+/* Responsive: Mobile */
 @media screen and (max-width: 450px) {
-[class*='col-'] { width: 100%; }
+    [class*='col-'] {
+        width: 100%;
+    }
 }
