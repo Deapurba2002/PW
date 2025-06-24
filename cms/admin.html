@@ -1,20 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CRUD Sederhana Supabase - Prosedural</title>
-<style>
-  body { font-family: Arial, sans-serif; margin: 20px; }
-  #crudForm { display: none; border: 1px solid #ccc; padding: 15px; width: 300px; margin-top: 15px; }
-  table { border-collapse: collapse; width: 100%; margin-top: 15px; }
-  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-  tr:hover { background-color: #f9f9f9; cursor: pointer; }
-  button { margin-right: 10px; }
-  #addBtn { margin-bottom: 15px; }
-</style>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #5f2c82, #49a09d);
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      padding: 40px;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .login-box h2 {
+      color: #00f0ff;
+      margin-bottom: 30px;
+    }
+
+    .login-box label {
+      display: block;
+      color: #ffffff;
+      text-align: left;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .login-box input::placeholder {
+      color: #ddd;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00f0ff, #00bfff);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-box button:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
 <body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <form action="login.php" method="POST">
+      <label for="email">USERNAME (EMAIL):</label>
+      <input type="email" name="email" id="email" placeholder="Enter your email" required>
+      
+      <label for="password">PASSWORD:</label>
+      <input type="password" name="password" id="password" placeholder="Enter your password" required>
+      
+      <button type="submit">LOGIN</button>
+    </form>
+  </div>
+</body>
+</html>
 
 <h2>CRUD Sederhana dengan Supabase</h2>
 <button id="addBtn">Tambah</button>
