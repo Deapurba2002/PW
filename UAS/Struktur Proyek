@@ -1,0 +1,7 @@
+tugas-mahasiswa-app/
+├── frontend/
+│   ├── index.html        ← Halaman Daftar & Form CRUD
+│   ├── login.html        ← Halaman Login
+│   ├── style.css
+│   └── script.js
+└── README.md
