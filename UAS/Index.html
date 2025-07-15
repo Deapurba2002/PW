@@ -1,0 +1,11 @@
+const { data: profile } = await supabase
+  .from('profiles')
+  .select('role')
+  .eq('id', data.user.id)
+  .single();
+
+if (profile.role === 'admin') {
+  window.location.href = 'admin.html';
+} else {
+  window.location.href = 'index.html';
+}
