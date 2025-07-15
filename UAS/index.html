@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Dashboard Tugas</title>
+</head>
+<body>
+  <button id="logoutBtn">Logout</button>
+  <form id="taskForm">
+    <input id="judul" placeholder="Judul" required>
+    <textarea id="deskripsi" placeholder="Deskripsi" required></textarea>
+    <input type="date" id="deadline" required>
+    <button type="submit">Tambah / Update</button>
+  </form>
+  <div id="taskList"></div>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+    const supabase = createClient('YOUR_SUPABASE_URL','YOUR_SUPABASE_ANON_KEY')
+    let session = null, editingId = null
+
+    window.onload = async () => {
+      const { data: { session: s } } = await supabase.auth.getSession()
+      if (!s) return location.href = 'login.html'
+      session = s
+      loadTasks()
+    }
+
+    document.getElementById('logoutBtn').onclick = async () => {
+      await supabase.auth.signOut()
+      location.href = 'login.html'
+    }
+
+    async function loadTasks() {
+      const { data, error } = await supabase
+        .from('tugas')
+        .select('*')
+        .eq('user_email', session.user.email)
+        .order('deadline', { ascending: true })
+      if (error) return alert(error.message)
+      const list = document.getElementById('taskList')
+      list.innerHTML = ''
+      data.forEach(t => {
+        const div = document.createElement('div')
+        div.innerHTML = `
+          <h3>${t.judul}</h3>
+          <p>${t.deskripsi}</p>
+          <p>Deadline: ${t.deadline}</p>
+          <button onclick="editTask('${t.id}','${t.judul}','${t.deskripsi}','${t.deadline}')">Edit</button>
+          <button onclick="deleteTask('${t.id}')">Hapus</button>
+        `
+        list.appendChild(div)
+      })
+    }
+
+    window.editTask = (id, judul, deskripsi, deadline) => {
+      editingId = id
+      document.getElementById('judul').value = judul
+      document.getElementById('deskripsi').value = deskripsi
+      document.getElementById('deadline').value = deadline
+    }
+
+    window.deleteTask = async (id) => {
+      if (!confirm('Yakin hapus tugas?')) return
+      await supabase.from('tugas').delete().eq('id', id)
+      loadTasks()
+    }
+
+    document.getElementById('taskForm').onsubmit = async e => {
+      e.preventDefault()
+      const judul = e.target.judul.value
+      const deskripsi = e.target.deskripsi.value
+      const deadline = e.target.deadline.value
+      if (!judul || !deskripsi || !deadline) return alert('Semua wajib diisi!')
+      if (editingId) {
+        await supabase.from('tugas').update({ judul, deskripsi, deadline })
+          .eq('id', editingId)
+        editingId = null
+      } else {
+        await supabase.from('tugas').insert([{
+          judul, deskripsi, deadline,
+          user_email: session.user.email
+        }])
+      }
+      e.target.reset()
+      loadTasks()
+    }
+  </script>
+</body>
+</html>
