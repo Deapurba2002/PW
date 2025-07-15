@@ -1,5 +1,0 @@
-body { max-width: 800px; margin: auto; font-family: sans-serif; }
-#taskList div { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
-@media (max-width: 600px) {
-  #taskList div { font-size: 14px; padding: 8px; }
-}
